@@ -39,7 +39,6 @@ INSTALLED_APPS = [
 
     # STARTER APPS
     'crispy_forms',
-    'ckeditor',
     'django_filters',
 
     # WEB APPS
