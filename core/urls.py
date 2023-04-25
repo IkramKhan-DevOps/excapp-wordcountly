@@ -15,6 +15,7 @@ def handler500(request, *args, **kwargs):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+path('tinymce/', include('tinymce.urls')),
     path('', include('src.website.urls', namespace='website')),
 
     # path('accounts/', include('allauth.urls')),

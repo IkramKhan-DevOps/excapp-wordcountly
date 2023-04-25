@@ -1,5 +1,6 @@
 
 import datetime
+import os
 from pathlib import Path
 import environ
 
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     # STARTER APPS
     'crispy_forms',
     'django_filters',
+    'tinymce',
 
     # WEB APPS
     'allauth',
