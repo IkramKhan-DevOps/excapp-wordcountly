@@ -1,7 +1,5 @@
-from django.shortcuts import render
+import folium
 from django.views.generic import TemplateView
-
-from src.website.forms import EditorForm
 
 
 class HomeView(TemplateView):
@@ -9,13 +7,33 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
-        context['form'] = EditorForm()
         return context
 
 
 class PrivacyPolicyView(TemplateView):
-    template_name = 'website/home.html'
+    template_name = 'website/privacy-policy.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(PrivacyPolicyView, self).get_context_data(**kwargs)
+        return context
 
 
-class EmbedCodeView(TemplateView):
-    template_name = 'website/home.html'
+class BlogsView(TemplateView):
+    template_name = 'website/blogs.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(BlogsView, self).get_context_data(**kwargs)
+        return context
+
+
+class ContactUsView(TemplateView):
+    template_name = 'website/contact-us.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ContactUsView, self).get_context_data(**kwargs)
+        marks = folium.Map(location=[45.5236, -122.6750], zoom_start=6)
+        co_ordinates = (45.5236, -122.6750)
+        folium.Marker(co_ordinates, popup=str("name")).add_to(marks)
+        context['map'] = marks._repr_html_()
+
+        return context

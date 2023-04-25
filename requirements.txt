@@ -2,6 +2,7 @@ six
 Faker
 pillow
 markdown
+folium
 python-dateutil
 
 django

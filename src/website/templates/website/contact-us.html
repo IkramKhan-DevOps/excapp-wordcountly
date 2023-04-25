@@ -1,0 +1,75 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block subtitle %}
+    Contact Us
+{% endblock %}
+
+{% block content %}
+
+    <div class="home my-5">
+        <div class="container my-5">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <div class="hero-content wow fadeIn">
+                        <h1 class="font-weight-bold">Contact Us</h1>
+                        <p>{% lorem 20 w %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="yd-stats wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+        <div class="container-s">
+            <div class="row text-center">
+
+                <div class="col-sm-4">
+                    <div class="counter-up">
+                        <h3><span class=""><i class="bx bx-phone"></i></span></h3>
+                        <div class="counter-text">
+                            <h2><a class="text-white" href="tel:+923005849613">+923005849613</a></h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="counter-up">
+                        <h3><span class=""><i class="bx bx-mail-send"></i></span></h3>
+                        <div class="counter-text">
+                            <h2><a class="text-white" href="mailto:support@exarth.com">support@exarth.com</a></h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="counter-up">
+                        <h3><span class=""><i class="bx bx-map"></i></span></h3>
+                        <div class="counter-text">
+                            <h2>Office #12 Main street London</h2>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="signup" class="cta-sm">
+        <div class="container-m text-center">
+            <div class="cta-content">
+                <h4>GRAB ARRAY FOR BEST PRICE TODAY</h4>
+                <h1>Start now and turn your online business into a profitable route.</h1>
+                <div class="form wow fadeIn" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeIn;">
+                    <form id="chimp-form" class="subscribe-form wow zoomIn animated" action="assets/php/subscribe.php" method="post" accept-charset="UTF-8" enctype="application/x-www-form-urlencoded" autocomplete="off" novalidate="novalidate" style="visibility: visible;">
+                        <input class="mail" id="chimp-email" type="email" name="email" placeholder="Enter your email address" autocomplete="off">
+                        <input class="submit-button" type="submit" value="Sign up now">
+                    </form>
+                    <div id="response"></div>
+                </div>
+                <div class="form-note">
+                    <p>14-day free trial and no credit card required.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

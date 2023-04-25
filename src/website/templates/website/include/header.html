@@ -1,43 +1,19 @@
 {% load static %}
-<nav class="navbar navbar-expand-lg navigation fixed-top sticky">
 
-    <div class="container">
-        <a class="navbar-logo" href="/static">
-            {# WHITE #}
-            <img src="{% static 'core/images/logos/logo-red-1000.png' %}" alt="" height="19" class="logo logo-dark">
-            {# COLORED #}
-            <img src="{% static 'core/images/logos/logo-red-1000.png' %}" alt="" height="19" class="logo logo-light">
-        </a>
-
-        <button type="button" class="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light"
-                data-toggle="collapse" data-target="#topnav-menu-content">
-            <i class="fa fa-fw fa-bars"></i>
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+    <div class="container container-s">
+        <a class="navbar-brand" href="/">Word Countly.</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="collapse navbar-collapse" id="topnav-menu-content">
-            <ul class="navbar-nav ml-auto" id="topnav-menu">
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/static#home">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/static#roadmap">Roadmap</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/static#team">Team</a>
-                </li>
-
-
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto navbar-right">
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'website:home' %}#main-area">Lets Count</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'website:privacy-policy' %}">Privacy Policy</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'website:contact-us' %}">Contact Us</a></li>
+                <li class="nav-item"><a class="btn-cta nav-link js-scroll-trigger" href="{% url 'website:blogs' %}">Blogs</a></li>
             </ul>
-
-
-            <div class="ml-lg-2">
-                <a class="btn btn-sm btn-success" href="#">
-                    <i class="mdi mdi-account-lock"></i> Login
-                </a>
-            </div>
-
-
         </div>
     </div>
 </nav>
