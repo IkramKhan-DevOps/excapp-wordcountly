@@ -49,7 +49,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-6 text-left">
-                                    <p class="text-muted mb-2">Read Time: <b class="font-weight-bold">00 mins</b>
+                                    <p class="text-muted mb-2">Read Time: <b class="font-weight-bold" id="read-time">00</b> mins
                                     </p>
                                 </div>
                             </div>
@@ -82,30 +82,41 @@
 
         quill.on('text-change', function () {
             let text = quill.getText();
+
             countWords(text);
             countCharacters(text);
             countSentences(text);
             countParagraphs(text);
+
         });
 
         function countWords(text) {
+
             var words = text.trim().split(/\s+/).length;
-            document.getElementById("word-count").innerHTML = words;
+            calculateReadTime(words);
+            document.getElementById("word-count").innerHTML = words <= 1? 0: words ;
         }
 
         function countSentences(text) {
             var sentences = text.trim().split(/[.!?]+/).length;
-            document.getElementById("sentence-count").innerHTML = sentences;
+            console.log(sentences)
+            document.getElementById("sentence-count").innerHTML = sentences <= 1? 0: sentences;
         }
 
         function countParagraphs(text) {
             var paragraphs = text.trim().split(/\n\n+/).length;
-            document.getElementById("paragraph-count").innerHTML = paragraphs;
+            document.getElementById("paragraph-count").innerHTML = paragraphs <= 1? 0: paragraphs;
         }
 
         function countCharacters(text) {
             var characters = text.length;
-            document.getElementById("character-count").innerHTML = characters;
+            document.getElementById("character-count").innerHTML = characters <= 1? 0: characters;
+        }
+
+        function calculateReadTime(word_count) {
+            const readingSpeed = 200;
+            const readTime = Math.ceil(word_count / readingSpeed);
+            document.getElementById("read-time").innerHTML = readTime;
         }
 
     </script>
