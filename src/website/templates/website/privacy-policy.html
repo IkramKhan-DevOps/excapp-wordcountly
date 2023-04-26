@@ -13,7 +13,7 @@
                 <div class="col-md-12 mt-5">
                     <div class="hero-content wow fadeIn">
                         <h1>Privacy Policy</h1>
-                        <p>{% lorem 20 w %}</p>
+                        <p>We take your privacy seriously. This privacy policy describes how we collect, use, and protect your personal information.</p>
                     </div>
                 </div>
 
@@ -23,11 +23,10 @@
 
     <div id="main-area" class="pb-5 mark_paragraph">
         <div class="container-m">
-            <iframe src="/embed-code/" width="800" height="800"></iframe>
             <div class="row">
                 <div class="col-12">
 
-                    {% lorem 10 p %}
+                    {{ content.privacy_policy|safe }}
 
                 </div>
             </div>

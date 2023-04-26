@@ -6,16 +6,17 @@
 
     <title>
         {% block title %}
-            {% if site_title %}
-                {{ site_title }}
-            {% else %}
-                Word Countly
-            {% endif %} |
+            {{ content.name }} |
             {% block subtitle %}
 
             {% endblock %}
         {% endblock %}
     </title>
+    {% if content.favicon_icon %}
+        <link rel="shortcut icon" href="{{ content.favicon_icon.url }}">
+    {% else %}
+        <link rel="shortcut icon" href="{% static 'website/images/logos/favico.jpg' %}">
+    {% endif %}
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,9 +26,9 @@
         <meta name="keywords" content="wordcount, word, count">
     {% endblock %}
 
-    <link href="{% static 'website/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" media="all"/>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
 
+    <link href="{% static 'website/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" media="all"/>
     <link rel="stylesheet" href="{% static 'website/css/animate.css' %}"> <!-- Resource style -->
     <link rel="stylesheet" href="{% static 'website/css/owl.carousel.css' %}">
     <link rel="stylesheet" href="{% static 'website/css/owl.theme.css' %}">
@@ -35,7 +36,7 @@
     <link href="{% static 'website/css/style.css' %}" rel="stylesheet" type="text/css" media="all"/>
     <link href="{% static 'website/css/icons.css' %}" rel="stylesheet" type="text/css" media="all"/>
     <style>
-        .mark_paragraph p{
+        .mark_paragraph p {
             font-size: 16px;
             font-weight: 500;
             line-height: 1.3;

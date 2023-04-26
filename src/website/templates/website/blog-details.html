@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block subtitle %}
-    Blog Description
+    {{ object.title }}
 {% endblock %}
 
 {% block content %}
@@ -11,8 +11,9 @@
         <div class="container my-5">
             <div class="row text-center">
                 <div class="col-md-12">
-                    <div class="hero-content wow fadeIn">
-                        <h1 class="font-weight-bold">Blog Detail</h1>
+                    <div class="hero-content wow fadeIn ">
+                        <h1 class="font-weight-bold">{{ object.title }}</h1>
+                        <p>{{ object.description }}</p>
                     </div>
                 </div>
             </div>
@@ -22,14 +23,10 @@
     <div id="pricing" class="pricing-section text-center">
         <div class="container">
             <div class="row">
-                    <div class="col-sm-12 mark_paragraph mb-4">
+                <div class="col-sm-12 mark_paragraph mb-4">
                     <div class="card border-0">
-                        <div class="card-header p-0 border-0 bg-white">
-                            <img src="{% static 'website/images/big.png' %}"
-                                 class="img-thumbnail border-0 img-responsive">
-                        </div>
                         <div class="card-body text-left p-5">
-                            <p class="text-muted">{% lorem 10 p %}</p>
+                            <p class="text-muted">{{ object.content|safe }}</p>
                         </div>
                     </div>
                 </div>
@@ -37,24 +34,34 @@
         </div>
     </div>
 
-    <div id="pricing" class="pricing-section text-center border-top">
-        <div class="container">
-            <div class="row">
+    {% if blogs %}
+        <div id="pricing" class="pricing-section text-center border-top">
+            <div class="container">
+                <div class="row">
 
-                <div class="col-sm-12 col-md-6 col-lg-4 mark_paragraph">
-                    <div class="card">
-                        <div class="card-header p-0 border-0 bg-white">
-                            <img src="{% static 'website/images/big.png' %}"
-                                 class="img-thumbnail border-0 img-responsive">
+                    {% for objectx in blogs %}
+                        <div class="col-sm-12 col-md-6 col-lg-4 mark_paragraph mb-4">
+                            <div class="card">
+                                <div class="card-header p-0 border-0 bg-white">
+                                    <a href="{% url 'website:blog-detail' objectx.slug %}">
+                                        <img src="{{ objectx.thumbnail.url }}"
+                                             class="img-thumbnail border-0 img-responsive">
+                                    </a>
+                                </div>
+                                <div class="card-body text-left">
+                                    <h3 class="font-weight-bold mb-2">
+                                        <a href="{% url 'website:blog-detail' objectx.slug %}">
+                                            {{ objectx.title }}
+                                        </a>
+                                    </h3>
+                                    <p class="text-muted">{{ objectx.description|truncatechars:100 }}</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body text-left">
-                            <h3 class="font-weight-bold mb-2">Name of Applicatoin</h3>
-                            <p class="text-muted">{% lorem 30 w %}</p>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
-    </div>
+    {% endif %}
 
 {% endblock %}

@@ -13,7 +13,7 @@
                 <div class="col-md-12">
                     <div class="hero-content wow fadeIn">
                         <h1 class="font-weight-bold">Blogs</h1>
-                        <p>{% lorem 20 w %}</p>
+                        <p>Explore our collection of informative blog posts on a variety of topics.</p>
                     </div>
                 </div>
             </div>
@@ -23,20 +23,32 @@
     <div id="pricing" class="pricing-section text-center p-4">
         <div class="container">
             <div class="row">
-                {% for foo in '123456790' %}
-                    <div class="col-sm-12 col-md-6 col-lg-4 mark_paragraph mb-4">
-                    <div class="card">
-                        <div class="card-header p-0 border-0 bg-white">
-                            <img src="{% static 'website/images/big.png' %}"
-                                 class="img-thumbnail border-0 img-responsive">
+                {% if object_list %}
+                    {% for object in object_list %}
+                        <div class="col-sm-12 col-md-6 col-lg-4 mark_paragraph mb-4">
+                            <div class="card">
+                                <div class="card-header p-0 border-0 bg-white">
+                                    <a href="{% url 'website:blog-detail' object.slug %}">
+                                        <img src="{{ object.thumbnail.url }}"
+                                         class="img-thumbnail border-0 img-responsive">
+                                    </a>
+                                </div>
+                                <div class="card-body text-left">
+                                    <h3 class="font-weight-bold mb-2">
+                                        <a href="{% url 'website:blog-detail' object.slug %}">
+                                            {{ object.title }}
+                                        </a>
+                                    </h3>
+                                    <p class="text-muted">{{ object.description|truncatechars:100 }}</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body text-left">
-                            <h3 class="font-weight-bold mb-2">Name of Applicatoin</h3>
-                            <p class="text-muted">{% lorem 30 w %}</p>
-                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="mark_paragraph">
+                    <p class="text-danger">No Blogs posted yet.</p>
                     </div>
-                </div>
-                {% endfor %}
+                {% endif %}
             </div>
         </div>
     </div>

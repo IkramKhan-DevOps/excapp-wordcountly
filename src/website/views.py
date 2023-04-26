@@ -12,6 +12,7 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
         context['content'] = get_or_create_website()
+        context['blogs'] = Blog.objects.filter(is_active=True).order_by('?')
         return context
 
 
@@ -44,6 +45,7 @@ class BlogDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(BlogDetailView, self).get_context_data(**kwargs)
         context['content'] = get_or_create_website()
+        context['blogs'] = Blog.objects.filter(is_active=True).exclude(pk__in=[self.get_object().pk]).order_by('?')
         return context
 
 

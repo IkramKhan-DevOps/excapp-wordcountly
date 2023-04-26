@@ -6,11 +6,11 @@ from tinymce import models as tinymce_models
 
 class Content(models.Model):
 
-    name = models.CharField(max_length=100, unique=True, default='Countly', help_text="Name of this application"),
+    name = models.CharField(max_length=100, default='Countly', help_text="Name of this application")
     tagline = models.CharField(
-        max_length=255, unique=True, default='Track your writing progress with Countly',
+        max_length=255, default='Track your writing progress with Countly',
         help_text="Tagline or business line"
-    ),
+    )
     base_url = models.URLField(
         default='http://127.0.0.1:8000/', unique=True,
         help_text="your application domain (base url) i.e https://example.com/"
@@ -70,7 +70,7 @@ class BlogTag(models.Model):
 class Blog(models.Model):
     title = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(unique=True)
-    thumbnail = ResizedImageField(size=[500, 500], crop=['middle', 'center'], upload_to='website/blog/thumbnail')
+    thumbnail = ResizedImageField(size=[500, 300], crop=['middle', 'center'], upload_to='website/blog/thumbnail')
     category = models.ForeignKey(BlogCategory, null=True, blank=False, on_delete=models.SET_NULL)
     tags = models.ManyToManyField(BlogTag)
     description = models.TextField(null=True, blank=True, help_text="Short description for your blog")

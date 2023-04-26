@@ -1,18 +1,28 @@
 {% load static %}
 
 <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
-    <div class="container container-s">
-        <a class="navbar-brand" href="/">Word Countly.</a>
+    <div class="container ">
+        <a class="navbar-brand" href="/">
+
+            {% if content.logo %}
+                <img src="{{ content.logo.url }}" style="height: 25px;" width="auto">
+            {% else %}
+                <img src="{% static 'website/images/logos/logo-hor-1.jpg' %}" style="height: 25px;" width="auto">
+            {% endif %}
+
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto navbar-right">
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'website:home' %}#main-area">Lets Count</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'website:privacy-policy' %}">Privacy Policy</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'website:contact-us' %}">Contact Us</a></li>
-                <li class="nav-item"><a class="btn-cta nav-link js-scroll-trigger" href="{% url 'website:blogs' %}">Blogs</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'website:blogs' %}">Blogs</a>
+                </li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'website:privacy-policy' %}">Privacy
+                    Policy</a></li>
+                <li class="nav-item"><a class="btn-cta nav-link js-scroll-trigger" href="{% url 'website:blogs' %}">Contact
+                    Us</a></li>
             </ul>
         </div>
     </div>

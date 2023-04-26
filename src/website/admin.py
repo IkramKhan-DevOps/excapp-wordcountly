@@ -36,3 +36,5 @@ class ContentAdmin(admin.ModelAdmin):
 
 admin.site.register(Blog, BlogAdmin)
 admin.site.register(Content, ContentAdmin)
+admin.site.register(BlogCategory)
+admin.site.register(BlogTag)
