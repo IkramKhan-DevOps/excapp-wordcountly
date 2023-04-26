@@ -1,4 +1,5 @@
 from django.db import models
+from django.template.defaultfilters import slugify
 from django_resized import ResizedImageField
 from tinymce import models as tinymce_models
 
@@ -38,6 +39,11 @@ class Content(models.Model):
     def __str__(self):
         return self.name
 
+    def delete(self, *args, **kwargs):
+        self.favicon_icon.delete(save=True)
+        self.logo.delete(save=True)
+        super(Content, self).delete(*args, **kwargs)
+
 
 class BlogCategory(models.Model):
     name = models.CharField(max_length=255)
@@ -62,10 +68,11 @@ class BlogTag(models.Model):
 
 
 class Blog(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, unique=True)
+    slug = models.SlugField(unique=True)
     thumbnail = ResizedImageField(size=[500, 500], crop=['middle', 'center'], upload_to='website/blog/thumbnail')
     category = models.ForeignKey(BlogCategory, null=True, blank=False, on_delete=models.SET_NULL)
-    tags = models.ManyToManyField(BlogTag, null=True, blank=True)
+    tags = models.ManyToManyField(BlogTag)
     description = models.TextField(null=True, blank=True, help_text="Short description for your blog")
 
     content = tinymce_models.HTMLField()
@@ -81,4 +88,13 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        return super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        self.thumbnail.delete(save=True)
+        super(Blog, self).delete(*args, **kwargs)
 

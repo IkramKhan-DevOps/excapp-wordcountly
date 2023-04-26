@@ -1,5 +1,9 @@
 import folium
-from django.views.generic import TemplateView
+from django.shortcuts import get_object_or_404
+from django.views.generic import TemplateView, DetailView, ListView
+
+from src.website.bll import get_or_create_website
+from src.website.models import Blog
 
 
 class HomeView(TemplateView):
@@ -7,6 +11,7 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
+        context['content'] = get_or_create_website()
         return context
 
 
@@ -15,22 +20,30 @@ class PrivacyPolicyView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(PrivacyPolicyView, self).get_context_data(**kwargs)
+        context['content'] = get_or_create_website()
         return context
 
 
-class BlogsView(TemplateView):
+class BlogsView(ListView):
     template_name = 'website/blogs.html'
+    queryset = Blog.objects.filter(is_active=True)
 
     def get_context_data(self, **kwargs):
         context = super(BlogsView, self).get_context_data(**kwargs)
+        context['content'] = get_or_create_website()
         return context
 
 
-class BlogDetailView(TemplateView):
+class BlogDetailView(DetailView):
     template_name = 'website/blog-details.html'
+    model = Blog
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Blog, slug=self.kwargs['slug'])
 
     def get_context_data(self, **kwargs):
         context = super(BlogDetailView, self).get_context_data(**kwargs)
+        context['content'] = get_or_create_website()
         return context
 
 
@@ -39,9 +52,5 @@ class ContactUsView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(ContactUsView, self).get_context_data(**kwargs)
-        marks = folium.Map(location=[45.5236, -122.6750], zoom_start=6)
-        co_ordinates = (45.5236, -122.6750)
-        folium.Marker(co_ordinates, popup=str("name")).add_to(marks)
-        context['map'] = marks._repr_html_()
-
+        context['content'] = get_or_create_website()
         return context
