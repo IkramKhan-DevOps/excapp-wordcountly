@@ -72,17 +72,16 @@
             <div class="row text-center">
                 <div class="col-md-12">
                     <div class="features-intro mb-2">
-                        <h1 class="mb-2" style="font-size: 50px;"><i class="fa fa-code"></i></h1>
-                        <h2>Embed Countly</h2>
+                        <h2>Embed {{ content.name }}</h2>
                         <p>Just copy the text below and paste inside your website code.</p>
                     </div>
                 </div>
                 <div class="col-12 mark_paragraph">
                     <div class="row justify-content-center">
-                        <div class="col-sm-7">
+                        <div class="col-sm-8">
                             <div class="form-group">
-                                <textarea rows="1" id="code-area" disabled="disabled"
-                                          class="form-control border-0 text-center p-4"><iframe src="/embed-code/" width="800" height="800"></iframe></textarea>
+                                <textarea rows="2" id="code-area" disabled="disabled"
+                                          class="form-control rounded border-0 text-center p-4" style="font-size: 14px;font-family: 'Montserrat';"><iframe src="{{ content.base_url }}embed-code/" width="800" height="800"></iframe></textarea>
                                 <button class="btn-action js-scroll-trigger" id="copy-code"><span
                                         class="bx bx-copy"></span> Copy
                                 </button>
