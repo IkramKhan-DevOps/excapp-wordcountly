@@ -23,19 +23,19 @@
                             <div class="row">
                                 <div class="col">
                                     <p class="text-muted mb-2">Characters</p>
-                                    <h1 class="">00</h1>
+                                    <h1 id="character-count">00</h1>
                                 </div>
                                 <div class="col">
                                     <p class="text-muted mb-2">Words</p>
-                                    <h1>00</h1>
+                                    <h1 id="word-count">00</h1>
                                 </div>
                                 <div class="col">
                                     <p class="text-muted mb-2">Sentences</p>
-                                    <h1>00</h1>
+                                    <h1 id="sentence-count">00</h1>
                                 </div>
                                 <div class="col">
                                     <p class="text-muted mb-2">Paragraphs</p>
-                                    <h1>00</h1>
+                                    <h1 id="paragraph-count">00</h1>
                                 </div>
                             </div>
                         </div>
@@ -74,7 +74,7 @@
 {% block js_out %}
     <script>
 
-        var quill = new Quill('#editor-container', {
+        let quill = new Quill('#editor-container', {
             placeholder: 'Write/paste your content here.',
             toolbar: '#toolbar-container',
             theme: 'snow',
@@ -82,7 +82,31 @@
 
         quill.on('text-change', function () {
             let text = quill.getText();
+            countWords(text);
+            countCharacters(text);
+            countSentences(text);
+            countParagraphs(text);
         });
+
+        function countWords(text) {
+            var words = text.trim().split(/\s+/).length;
+            document.getElementById("word-count").innerHTML = words;
+        }
+
+        function countSentences(text) {
+            var sentences = text.trim().split(/[.!?]+/).length;
+            document.getElementById("sentence-count").innerHTML = sentences;
+        }
+
+        function countParagraphs(text) {
+            var paragraphs = text.trim().split(/\n\n+/).length;
+            document.getElementById("paragraph-count").innerHTML = paragraphs;
+        }
+
+        function countCharacters(text) {
+            var characters = text.length;
+            document.getElementById("character-count").innerHTML = characters;
+        }
 
     </script>
 {% endblock %}

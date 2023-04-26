@@ -26,6 +26,14 @@ class BlogsView(TemplateView):
         return context
 
 
+class BlogDetailView(TemplateView):
+    template_name = 'website/blog-details.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(BlogDetailView, self).get_context_data(**kwargs)
+        return context
+
+
 class ContactUsView(TemplateView):
     template_name = 'website/contact-us.html'
 
