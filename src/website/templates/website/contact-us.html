@@ -1,0 +1,103 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block subtitle %}
+    Contact Us
+{% endblock %}
+
+{% block css %}
+    <style>
+        .mark_button {
+            height: 50px;
+            width: 100%;
+            border: 0;
+            border-radius: 4px;
+            margin: 0 auto;
+            margin: 15px 0;
+            padding: 0 25px 0 25px;
+            background: #6d48e5;
+            font-family: 'Montserrat';
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: capitalize;
+            letter-spacing: 0;
+            color: #FFFFFF;
+            cursor: pointer;
+            outline: none;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 100, .2);
+            -webkit-transition: 300ms;
+            -moz-transition: 300ms;
+            transition: 300ms;
+        }
+
+        .mark_button:hover {
+            box-shadow: 0 5px 25px 0 rgba(0, 0, 100, .2);
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <div class="home my-5">
+        <div class="container my-5">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <div class="hero-content wow fadeIn">
+                        <h1 class="font-weight-bold">Contact Us</h1>
+                        <p>Contact us now and let's make great things happen together!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="yd-stats wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+        <div class="container-s">
+            <div class="row text-center">
+
+                <div class="col-sm-4">
+                    <div class="counter-up">
+                        <h3><span class=""><i class="bx bx-phone"></i></span></h3>
+                        <div class="counter-text">
+                            <h2><a class="text-white"
+                                   href="tel:{{ content.contact_phone }}">{{ content.contact_phone }}</a></h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="counter-up">
+                        <h3><span class=""><i class="bx bx-mail-send"></i></span></h3>
+                        <div class="counter-text">
+                            <h2><a class="text-white"
+                                   href="mailto:{{ content.contact_email }}">{{ content.contact_email }}</a></h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="counter-up">
+                        <h3><span class=""><i class="bx bx-map"></i></span></h3>
+                        <div class="counter-text">
+                            <h2>{{ content.address }}</h2>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="signup" class="cta-sm">
+        <div class="container-m text-center">
+            <div class="cta-content">
+                <h4>GET IN TOUCH WITH US</h4>
+                <h1>Our friendly team is always ready to assist you with any questions or concerns you may have</h1>
+                <div class="mt-5">
+                    <a href="mailto:{{ content.contact_email }}" class="mark_button p-3">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
