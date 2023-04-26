@@ -176,5 +176,6 @@ if ENVIRONMENT != 'server':
         'django_browser_reload'
     ]
     MIDDLEWARE += [
+        'core.middlewares.XFrameOptionsMiddleware',
         'django_browser_reload.middleware.BrowserReloadMiddleware'
     ]

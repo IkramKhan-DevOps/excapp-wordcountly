@@ -1,0 +1,88 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block subtitle %}
+    Lets Count
+{% endblock %}
+
+{% block css %}
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+{% endblock %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block content %}
+    <div class="home my-0 py-0">
+        <div class="container-m my-0 py-0">
+            <div class="row text-center my-0 py-0">
+                <div class="col-12 my-0 py-0">
+                    <div class="">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <p class="text-muted mb-2">Characters</p>
+                                    <h1 class="">00</h1>
+                                </div>
+                                <div class="col">
+                                    <p class="text-muted mb-2">Words</p>
+                                    <h1>00</h1>
+                                </div>
+                                <div class="col">
+                                    <p class="text-muted mb-2">Sentences</p>
+                                    <h1>00</h1>
+                                </div>
+                                <div class="col">
+                                    <p class="text-muted mb-2">Paragraphs</p>
+                                    <h1>00</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div id="editor-container" style="height: 400px"></div>
+                </div>
+                <div class="col-12">
+                    <div class="">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6 text-left">
+                                    <p class="text-muted mb-2">Read Time: <b class="font-weight-bold">00 mins</b>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
+
+
+{% block js_in %}
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+{% endblock %}
+
+{% block js_out %}
+    <script>
+
+        var quill = new Quill('#editor-container', {
+            placeholder: 'Write/paste your content here.',
+            toolbar: '#toolbar-container',
+            theme: 'snow',
+        });
+
+        quill.on('text-change', function () {
+            let text = quill.getText();
+        });
+
+    </script>
+{% endblock %}
