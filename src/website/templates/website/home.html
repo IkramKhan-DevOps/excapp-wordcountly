@@ -2,190 +2,167 @@
 {% load static %}
 
 {% block subtitle %}
-    Lets Count
+Lets Count
 {% endblock %}
 
 {% block css %}
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-    <div class="home">
-        <div class="container-m">
-            <div class="row text-center">
-                <div class="col-12">
-                    <div class="">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col">
-                                    <p class="text-muted mb-2">Characters</p>
-                                    <h1 id="character-count">00</h1>
-                                </div>
-                                <div class="col">
-                                    <p class="text-muted mb-2">Words</p>
-                                    <h1 id="word-count">00</h1>
-                                </div>
-                                <div class="col">
-                                    <p class="text-muted mb-2">Sentences</p>
-                                    <h1 id="sentence-count">00</h1>
-                                </div>
-                                <div class="col">
-                                    <p class="text-muted mb-2">Paragraphs</p>
-                                    <h1 id="paragraph-count">00</h1>
-                                </div>
+<div class="home">
+    <div class="container-m">
+        <div class="row text-center">
+            <div class="col-12">
+                <div class="">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <p class="text-muted mb-2">Characters</p>
+                                <h1 id="character-count">00</h1>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div id="editor-container" style="height: 400px"></div>
-                </div>
-                <div class="col-12">
-                    <div class="">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-6 text-left">
-                                    <p class="text-muted mb-2">Read Time: <b class="font-weight-bold" id="read-time">00</b> mins
-                                    </p>
-                                </div>
+                            <div class="col">
+                                <p class="text-muted mb-2">Words</p>
+                                <h1 id="word-count">00</h1>
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 mb-4">
-                    <img src="{% static 'website/ads/bgad.png' %}" class="img-fluid">
-                </div>
-                <div class="col-6">
-                    <img src="{% static 'website/ads/ad.png' %}" class="img-fluid">
-                </div>
-                <div class="col-6">
-                    <img src="{% static 'website/ads/ad.png' %}" class="img-fluid">
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <div id="products" class="features wow fadeInDown">
-        <div class="container-m">
-            <div class="row text-center">
-                <div class="col-md-12">
-                    <div class="features-intro mb-2">
-                        <h2>Embed {{ content.name }}</h2>
-                        <p>Just copy the text below and paste inside your website code.</p>
-                    </div>
-                </div>
-                <div class="col-12 mark_paragraph">
-                    <div class="row justify-content-center">
-                        <div class="col-sm-8">
-                            <div class="form-group">
-                                <textarea rows="2" id="code-area" disabled="disabled"
-                                          class="form-control rounded border-0 text-center p-4" style="font-size: 14px;font-family: 'Montserrat';"><iframe src="{{ content.base_url }}embed-code/" width="800" height="800"></iframe></textarea>
-                                <button class="btn-action js-scroll-trigger" id="copy-code"><span
-                                        class="bx bx-copy"></span> Copy
-                                </button>
+                            <div class="col">
+                                <p class="text-muted mb-2">Sentences</p>
+                                <h1 id="sentence-count">00</h1>
+                            </div>
+                            <div class="col">
+                                <p class="text-muted mb-2">Paragraphs</p>
+                                <h1 id="paragraph-count">00</h1>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div class="yd-stats wow fadeIn">
-        <div class="container-s">
-            <div class="row text-center">
-                <div class="col-sm-12">
-                    <div class="intro">
-                        <h2>Boost your revenue & cut work hours</h2>
-                        <p>Organized workflow and predictive patterns to boost your revenue.</p>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="counter-up">
-                        <h3><span class="counter">47</span>%</h3>
-                        <div class="counter-text">
-                            <h2>Lesser backlogs</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="counter-up">
-                        <h3><span class="counter">33</span>%</h3>
-                        <div class="counter-text">
-                            <h2>Higher Profits</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="counter-up">
-                        <h3><span class="counter">33</span>%</h3>
-                        <div class="counter-text">
-                            <h2>Higher Profits</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="yd-link">
-                        <a href="#">Know more about the template</a>
-                    </div>
-                </div>
-
+            <div class="col-12">
+                <div id="editor-container" style="height: 400px"></div>
             </div>
-        </div>
-    </div>
-
-    {# BLOGS #}
-    <div id="pricing" class="pricing-section text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="features-intro">
-                        <h2>Recent Articles</h2>
-                        <p c>Lets read our most recent articles.</p>
-                    </div>
-                </div>
-
-                {% if blogs %}
-                    {% for objectx in blogs %}
-                        <div class="col-sm-12 col-md-6 col-lg-4 mark_paragraph mb-4">
-                            <div class="card">
-                                <div class="card-header p-0 border-0 bg-white">
-                                    <a href="{% url 'website:blog-detail' objectx.slug %}">
-                                        <img src="{{ objectx.thumbnail.url }}"
-                                             class="img-thumbnail border-0 img-responsive">
-                                    </a>
-                                </div>
-                                <div class="card-body text-left">
-                                    <h3 class="font-weight-bold mb-2">
-                                        <a href="{% url 'website:blog-detail' objectx.slug %}">
-                                            {{ objectx.title }}
-                                        </a>
-                                    </h3>
-                                    <p class="text-muted">{{ objectx.description|truncatechars:100 }}</p>
-                                </div>
+            <div class="col-12">
+                <div class="">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6 text-left">
+                                <p class="text-muted mb-2">Read Time: <b class="font-weight-bold" id="read-time">00</b>
+                                    mins
+                                </p>
                             </div>
                         </div>
-                    {% endfor %}
-                {% else %}
-                    <div class="mark_paragraph">
-                        <p class="text-danger">No Blogs posted yet.</p>
                     </div>
-                {% endif %}
+                </div>
+            </div>
+            {% if not adds.adds_image_1 %}
+            <div class="col-12 mb-4">
+                <a href="#"><img class="img-fluid" src="{% static 'website/ads/bgad.png' %}"></a>
+            </div>
+            {% else %}
+            <div class="col-12 mb-4">
+                <a href="{{link_1}}"> <img class="img-fluid" src="{{adds.adds_image_1.url}}"></a>
+            </div>
+            {% endif %}
+            {% if not adds.adds_image_2 %}
+            <div class="col-6">
+                <a href="#"> <img class="img-fluid" src="{% static 'website/ads/ad.png' %}"></a>
+            </div>
+            {% else %}
+            <div class="col-6">
+                <a href="{{link_2}}"><img class="img-fluid" src="{{adds.adds_image_2.url}}"></a>
+            </div>
+            {% endif %}
+            {% if not adds.adds_image_3 %}
+            <div class="col-6">
+                <a href="#"><img class="img-fluid" src="{% static 'website/ads/ad.png' %}"></a>
+            </div>
+            {% else %}
+            <div class="col-6">
+                <a href="{{link_3}}">    <img class="img-fluid" src="{{adds.adds_image_3.url}}"></a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="features wow fadeInDown" id="products">
+    <div class="container-m">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <div class="features-intro mb-2">
+                    <h2>Embed {{ content.name }}</h2>
+                    <p>Just copy the text below and paste inside your website code.</p>
+                </div>
+            </div>
+            <div class="col-12 mark_paragraph">
+                <div class="row justify-content-center">
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                                <textarea class="form-control rounded border-0 text-center p-4" disabled="disabled"
+                                          id="code-area"
+                                          rows="2"
+                                          style="font-size: 14px;font-family: 'Montserrat';"><iframe src="{{ content.base_url }}embed-code/" width="800" height="800"></iframe></textarea>
+                            <button class="btn-action js-scroll-trigger" id="copy-code"><span
+                                    class="bx bx-copy"></span> Copy
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</div>
+
+
+{# BLOGS #}
+<div class="pricing-section text-center" id="pricing">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="features-intro">
+                    <h2>Recent Articles</h2>
+                    <p c>Lets read our most recent articles.</p>
+                </div>
+            </div>
+
+            {% if blogs %}
+            {% for objectx in blogs %}
+            <div class="col-sm-12 col-md-6 col-lg-4 mark_paragraph mb-4">
+                <div class="card">
+                    <div class="card-header p-0 border-0 bg-white">
+                        <a href="{% url 'website:blog-detail' objectx.slug %}">
+                            <img class="img-thumbnail border-0 img-responsive"
+                                 src="{{ objectx.thumbnail.url }}">
+                        </a>
+                    </div>
+                    <div class="card-body text-left">
+                        <h3 class="font-weight-bold mb-2">
+                            <a href="{% url 'website:blog-detail' objectx.slug %}">
+                                {{ objectx.title }}
+                            </a>
+                        </h3>
+                        <p class="text-muted">{{ objectx.description|truncatechars:100 }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="mark_paragraph">
+                <p class="text-danger">No Blogs posted yet.</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
 
 {% endblock %}
 
 
 {% block js_in %}
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 {% endblock %}
 
 {% block js_out %}
-    <script>
+<script>
 
         $('#copy-code').click(function () {
             let value = $('#code-area').val()
@@ -237,5 +214,8 @@
             document.getElementById("read-time").innerHTML = readTime;
         }
 
-    </script>
+
+
+
+</script>
 {% endblock %}
