@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView, DetailView, ListView
 
 from src.website.bll import get_or_create_website
-from src.website.models import Blog
+from src.website.models import Blog, Add
 
 
 class HomeView(TemplateView):
@@ -12,6 +12,8 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
         context['content'] = get_or_create_website()
+        add = Add.objects.all()
+        context['adds'] = add.order_by('-created_on').first()
         context['blogs'] = Blog.objects.filter(is_active=True).order_by('?')
         return context
 

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import (
-    BlogCategory, BlogTag, Blog, Content
+    BlogCategory, BlogTag, Blog, Content,Add
 )
 
 
@@ -38,3 +38,4 @@ admin.site.register(Blog, BlogAdmin)
 admin.site.register(Content, ContentAdmin)
 admin.site.register(BlogCategory)
 admin.site.register(BlogTag)
+admin.site.register(Add)

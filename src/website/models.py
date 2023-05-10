@@ -5,7 +5,6 @@ from tinymce import models as tinymce_models
 
 
 class Content(models.Model):
-
     name = models.CharField(max_length=100, default='Countly', help_text="Name of this application")
     tagline = models.CharField(
         max_length=255, default='Track your writing progress with Countly',
@@ -43,6 +42,19 @@ class Content(models.Model):
         self.favicon_icon.delete(save=True)
         self.logo.delete(save=True)
         super(Content, self).delete(*args, **kwargs)
+
+
+class Add(models.Model):
+    adds_image_1 = models.ImageField(upload_to='adds/', null=True, blank=True)
+    link_1 = models.URLField(null=True, blank=True)
+    adds_image_2 = models.ImageField(upload_to='adds/', null=True, blank=True)
+    link_2 = models.URLField(null=True, blank=True)
+    adds_image_3 = models.ImageField(upload_to='adds/', null=True, blank=True)
+    link_3 = models.URLField(null=True, blank=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.id)
 
 
 class BlogCategory(models.Model):
@@ -97,4 +109,3 @@ class Blog(models.Model):
     def delete(self, *args, **kwargs):
         self.thumbnail.delete(save=True)
         super(Blog, self).delete(*args, **kwargs)
-
